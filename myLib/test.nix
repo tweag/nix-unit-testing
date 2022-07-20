@@ -1,5 +1,4 @@
-{nixpkgs}:
-let
+{nixpkgs}: let
   inherit (nixpkgs.lib) runTests;
   math = import ./math.nix {inherit nixpkgs;};
 in
@@ -14,4 +13,3 @@ in
       expected = false;
     };
   }
-

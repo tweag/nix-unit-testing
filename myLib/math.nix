@@ -1,5 +1,4 @@
-{nixpkgs}:
-let
+{nixpkgs}: let
   inherit (nixpkgs.lib) mod;
 in {
   # Returns true if integer is even.
