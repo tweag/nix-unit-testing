@@ -8,7 +8,7 @@ from pathlib import Path
 
 test_file = Path(__file__).parent.resolve() / "math.nix"
 
-def testIsEven_1():
+def test_isEven_1():
     expr = nix.eval(
         f'''
         let
@@ -18,7 +18,7 @@ def testIsEven_1():
         ''');
     assert expr == True
 
-def testIsEven_2():
+def test_isEven_2():
     expr = nix.eval(
         f'''
         let
