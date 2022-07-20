@@ -1,0 +1,11 @@
+# to run these tests:
+# nix run github:nix-community/nixt -- ./test.nixt
+{ pkgs ? import <nixpkgs> {}, nixt }:
+
+let
+  math = import ./math.nix;
+in
+  nixt.mkSuite "check isEven" {
+    "even number" = math.isEven 2 == true;
+    "odd number" = math.isEven (-3) == false;
+  }
