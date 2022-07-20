@@ -4,20 +4,27 @@ nix-shell -p 'python3.withPackages (p: with p; [ pytest pythonix ])' --command '
 '''
 
 import nix
+from pathlib import Path
 
-def test_isEven_1():
-    nix.eval(
-        '''
-        # with import (./. + "/math.nix");
-        with import (builtins.toString ./math.nix);
-        isEven 2
-#        let
-#          # mathLib = import "./math.nix";
-#          # mathLib = import (builtins.toString math.nix);
-#          # mathLib = import builtins.toPath (./. + "/math.nix");
-#          # mathLib = import ./math.nix;
-#          mathLib = import .math.nix;
-#        in
-#          # true
-#          mathLib.isEven 2
+test_file = Path(__file__).parent.resolve() / "math.nix"
+
+def testIsEven_1():
+    expr = nix.eval(
+        f'''
+        let
+          math = import {test_file};
+        in
+          math.isEven 2
         ''');
+    assert expr == True
+
+def testIsEven_2():
+    expr = nix.eval(
+        f'''
+        let
+          math = import {test_file};
+        in
+          math.isEven (-3)
+        ''');
+    assert expr == False
+
