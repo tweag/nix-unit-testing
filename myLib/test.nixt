@@ -1,0 +1,9 @@
+{ nixpkgs, nixt }:
+
+let
+  math = import ./math.nix {inherit nixpkgs;};
+in
+  nixt.mkSuite "check isEven" {
+    "even number" = math.isEven 2 == true;
+    "odd number" = math.isEven (-3) == false;
+  }

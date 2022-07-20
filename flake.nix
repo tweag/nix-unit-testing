@@ -1,9 +1,13 @@
 {
   description = "A flake demonstrating nix unit testing.";
 
-  outputs = { self, nixpkgs }: {
+  inputs = {
+    nixt.url = "github:nix-community/nixt";
+    nixt.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-    nix-lib-test = import ./test.nix;
-
+  outputs = { self, nixpkgs, nixt }: {
+    nix-lib-test = import ./myLib/test.nix {inherit nixpkgs;};
+    # nixt-test = import ./myLib/test.nixt {inherit nixpkgs nixt;};
   };
 }
