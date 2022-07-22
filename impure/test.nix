@@ -1,7 +1,8 @@
 let
-  lib = (import <nixpkgs> {}).lib;
+  pkgs = import <nixpkgs> {};
+  inherit (pkgs) lib;
   inherit (lib) runTests;
-  math = import ./math.nix;
+  math = import ./math.nix {inherit lib;};
 in
   runTests {
     testIsEven_1 = {
