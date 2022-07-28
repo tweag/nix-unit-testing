@@ -1,5 +1,6 @@
+{ pkgs ? import <nixpkgs> {} }:
 let
-  lib = (import <nixpkgs> {}).lib;
+  inherit (pkgs) lib;
 in rec {
   # Returns the factorial of a postive integer.
   factorial = x:
