@@ -1,5 +1,7 @@
+# to run these tests:
+# nix eval --impure --expr 'import ./test.nix {}'
+{ pkgs ? import <nixpkgs> {} }:
 let
-  pkgs = import <nixpkgs> {};
   inherit (pkgs) lib;
   inherit (lib) runTests;
   math = import ./math.nix {inherit lib;};
