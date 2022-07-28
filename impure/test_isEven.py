@@ -24,10 +24,10 @@ def isEven_expr(file: Path, value: int) -> bool:
     ''' % (file, str(value))
 
 def test_isEven_1():
-    expr = isEven_expr(file=test_file, value=2)
-    assert nix.eval(expr) == True
+    expr = nix.eval(isEven_expr(file=test_file, value=2))
+    assert expr == True
 
 def test_isEven_2():
-    expr = isEven_expr(file=test_file, value=-3)
-    assert nix.eval(expr) == False
+    expr = nix.eval(isEven_expr(file=test_file, value=-3))
+    assert expr == False
 
