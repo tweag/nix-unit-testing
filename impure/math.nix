@@ -1,6 +1,4 @@
-let
-  lib = (import <nixpkgs> {}).lib;
-in {
+{lib}: {
   # Returns true if integer is even.
-  isEven = x: (lib.mod x 2) == 0;
+  isEven = x: lib.mod x 2 == 0;
 }

@@ -1,7 +1,10 @@
+# to run these tests:
+# nix eval --impure --expr 'import ./test.nix {}'
+{ pkgs ? import <nixpkgs> {} }:
 let
-  lib = (import <nixpkgs> {}).lib;
+  inherit (pkgs) lib;
   inherit (lib) runTests;
-  math = import ./math.nix;
+  math = import ./math.nix {inherit lib;};
 in
   runTests {
     testIsEven_1 = {
