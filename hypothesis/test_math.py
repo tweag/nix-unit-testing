@@ -19,12 +19,12 @@ def expression(file: Path, value: int) -> int:
   ) {}
   ''' % (file, str(value))
 
-@given(st.integers(min_value=1, max_value=20))
+@given(st.integers(min_value=0, max_value=20))
 def test_positive_integers(x):
     expr = nix.eval(expression(file=test_file, value=x))
     assert expr > 0
 
-@given(st.integers(max_value=0))
+@given(st.integers(max_value=-1))
 def test_negative_integers(x):
     with pytest.raises(nix.NixError):
         expr = nix.eval(expression(file=test_file, value=x))
