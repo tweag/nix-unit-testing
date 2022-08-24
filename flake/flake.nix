@@ -9,6 +9,11 @@
     self,
     nixpkgs,
   }: {
-    tests = import ./test.nix {inherit nixpkgs;};
+    tests = let
+      results = import ./test.nix {inherit nixpkgs;};
+    in
+      if results == []
+      then "all tests passed"
+      else throw (builtins.toJSON results);
   };
 }
