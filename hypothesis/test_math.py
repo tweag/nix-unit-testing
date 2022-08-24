@@ -1,8 +1,3 @@
-'''
-to run these tests:
-nix shell --impure --expr '(import <nixpkgs> {}).python3.withPackages (p: with p; [ hypothesis pytest pythonix ])' --command pytest test_math.py
-'''
-
 import nix
 from pathlib import Path
 from hypothesis import given, strategies as st
@@ -19,6 +14,7 @@ def expression(file: Path, value: int) -> int:
   ) {}
   ''' % (file, str(value))
 
+# max value limited to 20 because larger values go beyond 64-bit precision
 @given(st.integers(min_value=0, max_value=20))
 def test_positive_integers(x):
     expr = nix.eval(expression(file=test_file, value=x))
