@@ -1,8 +1,3 @@
-'''
-to run these tests:
-nix shell --impure --expr '(import <nixpkgs> {}).python3.withPackages (p: with p; [ pytest pythonix ])' --command pytest test_isEven.py
-'''
-
 import nix
 from pathlib import Path
 

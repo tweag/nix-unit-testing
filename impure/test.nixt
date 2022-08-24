@@ -1,5 +1,3 @@
-# to run these tests:
-# nix run github:nix-community/nixt -- ./test.nixt
 {
   pkgs ? import <nixpkgs> {},
   nixt,
