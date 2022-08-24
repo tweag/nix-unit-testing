@@ -1,5 +1,3 @@
-# to run these tests:
-# nix eval --impure --expr 'import ./test.nix {}'
 { pkgs ? import <nixpkgs> {} }:
 let
   inherit (pkgs) lib;
