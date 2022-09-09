@@ -1,6 +1,8 @@
 # nix-unit-testing
 
-A showcase of different unit testing frameworks for testing Nix code.
+A showcase of different unit testing frameworks for testing Nix code. Read the related [blog post][blog-post] that explains some of the examples here.
+
+[blog-post]: https://www.tweag.io/blog/2022-09-01-unit-test-your-nix-code/
 
 ## impure
 
